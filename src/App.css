@@ -1,38 +1,658 @@
-.App {
-  text-align: center;
+body {
+  overflow-x: hidden;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #10161c;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* -------------------NAVBAR START------------------ */
+#navbar{
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 0.5rem;
+  background: rgb(0, 0, 0);
+  min-height: 2rem;
+  padding: 0.5rem;
+  position: fixed;
+  z-index: 1000;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+#navbar .menu-1{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  width: 70%;
+  margin: 0.2rem auto;
+  padding-left: 0;
+}
+
+#navbar .menu-1 li{
+margin: 0rem auto;
+transition: 0.3s;
+text-align: center;
+}
+
+#navbar .menu-1 li a{
+  color: aliceblue;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: bolder;
+}
+
+#navbar .menu-1 li:hover{
+  border-bottom: 1px solid aliceblue;
+  transition: 0.3s;
+}
+
+#navbar .menu-2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding-right: 2rem;
+  font: 700;
+}
+
+#navbar .menu-2 li{
+  margin: 0 1rem;
+  font: 800;
+  }
+  
+  #navbar .menu-2 li a{
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: bolder;
+  }
+.hamburger{
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.logo{
+  width: 20%;
+ 
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.logo img{
+  width: 100%;
+  
+}
+
+.sub-menu{
+  display: none;
+}
+
+.mobile-menu{
+  display: none;
+}
+
+.show-sub-menu{
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  color: white;
+  list-style: none;
+  background: transparent;
+  padding: 0rem 2rem 1rem 0.5rem;
+  background-color: #000;
+  height: 100vh;
+  z-index: 3000;
+  width: 20%;
+  animation: reveal 0.6s ease-in-out;
+}
+
+@keyframes reveal{
+  from{
+      transform: translateX(100%);
   }
-  to {
-    transform: rotate(360deg);
+  to{
+      transform: translateX(0.5%) ;
   }
 }
+
+.sub-menu li, .mobile-menu li{
+margin-top: 1.5rem;
+border-bottom: 1px solid rgba(180, 178, 178, 0.862);
+}
+
+.mobile-menu p{
+  margin-top: 0.5rem;
+}
+
+.sub-menu li a, .mobile-menu li a{
+  text-decoration: none;
+  color: white;
+}
+
+.sub-menu li:hover, .mobile-menu li:hover{
+  transform: scale(1.05);
+  transition: 0.3s;
+  margin-right: 10rem;
+}
+
+/* --------------NAVBAR ENDS */
+
+
+/* -------------------MAIN START------------------ */
+
+.main-content{
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+}
+
+.main-content img{
+  width: 100%;
+  object-fit: contain;
+  transition: 0.3s;
+}
+
+.main-content img:hover{
+  filter: brightness(0.6);
+  transition: 0.3s;
+}
+
+.section-info{
+  position: absolute;
+  bottom: 15%;
+  left: 5%;
+  margin: 1rem;
+  padding: 1rem;
+  width: 50%;
+}
+
+.section-info p{
+  font-size: 1.3rem;
+  color: rgba(245, 242, 242, 0.929);
+  font-weight:500;
+  margin-bottom: 0.5rem;
+}
+
+.section-info h1{
+  font-size: 2.5rem;
+  color: rgba(245, 242, 242);
+  font-weight:800;
+  margin-top: 0.5rem;
+  width: 90%;
+}
+
+.btn{
+  position: relative;
+  width: 30%;
+  margin: 0.3rem;
+}
+
+.section-info button{
+  width: 100%;
+  padding: 1rem;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+  border: 2px solid white ;
+}
+
+button::before{
+  content: "";
+  background-color: rgba(252, 252, 252, 0.373);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  height: 0%;
+  transition: 0.3s;
+  color: black;
+  z-index: 1;
+  overflow: hidden;
+} 
+
+button:hover{
+  background-color: white;
+  color: black;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+button:hover::before{
+  height: 100%;
+}
+/* ----------MAIN END--------------- */
+
+/* ----------FOOTER START----------- */
+
+.footer{
+  padding: 1rem 0.5rem;
+  background: #000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+
+.socials{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.socials a{
+  text-decoration: none;
+  color: white;
+  padding: 0 0.5rem;
+}
+
+.socials a:hover{
+  color: rgba(228, 228, 228, 0.855);
+  transition: 0.3s;
+  cursor: pointer;
+}
+/* ----------FOOTER END----------- */
+
+.trademark{
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.trademark p{
+  text-align: center;
+  padding-top: 0.2rem;
+}
+
+.legals{
+}
+
+.legals a{
+  text-decoration: none;
+  color: white;
+  padding: 0 0.5rem;
+  font-size: 0.8rem;
+}
+
+.legals a:hover{
+  color: rgba(228, 228, 228, 0.855);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+/* ------------RESPONSIVENESS------------------ */
+/* TABLETS */
+@media screen and (max-width: 1048px) {
+  .show-sub-menu-2{
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: white;
+    list-style: none;
+    background: transparent;
+    padding: 0rem 2rem 1rem 0.5rem;
+    background-color: #000;
+    height: 100vh;
+    z-index: 3000;
+    width: 70%;
+    animation: reveal 0.6s ease-in-out;
+  }
+  
+  @keyframes reveal{
+    from{
+        transform: translateX(100%);
+    }
+    to{
+        transform: translateX(0.5%) ;
+    }
+  }
+
+  .show-sub-menu{
+    display: none;
+  }
+  #navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 5rem;
+  }
+
+  .logo{
+    margin: auto;
+    justify-content: center;
+    width: 70%;
+  }
+
+  .logo img{
+    width: 100%;
+  }
+
+  #navbar .menu-2{
+    display: block;
+    font-size: 2rem;
+    padding: 0rem 0.2rem;
+  }
+
+  #navbar .menu-1, .menu-2 .menu-item{
+    display: none;
+  }
+
+   
+  .main-content{
+    height: 100vh;
+  }
+
+  .main-content img{
+    object-fit: cover;
+    height: 100%;
+  }
+
+  .section-info{
+    width: 90%;
+  }
+  .section-info h1{
+    font-size: 3rem;
+    width: 90%;
+  }
+
+  .section-info button{
+    font-size: 1.5rem;
+    padding: 1.2rem;
+  }
+
+  .socials a{
+    font-size: 1.2rem;
+  }
+}
+
+
+@media screen and (max-width: 960px) {
+
+  .section-info{
+    width: 50%;
+  }
+ 
+  .section-info p{
+    font-size: 1rem;
+  }
+
+  .section-info{
+    width: 90%;
+    bottom: 8%;
+    padding: 0.5rem;
+    left: 3%;
+  }
+  .section-info h1{
+    font-size: 3rem;
+    width: 90%;
+  }
+
+  .section-info button{
+    font-size: 1.5rem;
+    padding: 1.4rem;
+  }
+
+
+}
+
+@media screen and (max-width: 821px ){
+  #navbar {
+    max-height: 6rem;
+  }
+
+  .logo{
+    width: 40%;
+  }
+  .logo img{
+    width: 100%;
+  }
+  .btn{
+    width: 40%;
+    font-size: 1rem;
+  }
+
+  .section-info button{
+    padding: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .section-info{
+    width: 80%;
+    padding: 0.2rem;
+    margin: 0.4rem;
+  }
+
+  .section-info h1{
+    font-size: 2.5rem;
+    width: 100%;
+  }
+
+  .main-content{
+    height: 100vh;
+  }
+
+  .main-content img{
+    object-fit: cover;
+    height: 100%;
+  }
+}
+
+
+ @media screen and (max-width:600px ){
+  #navbar {
+    max-height: 2.8rem;
+  }
+  
+  #navbar .menu-2{
+    font-size: 1.4rem;
+  }
+  .logo{
+    width: 40%;
+  }
+  .logo img{
+    width: 100%;
+  }
+
+  .main-content{
+    height: 100vh;
+  }
+
+  .main-content img{
+    object-fit: cover;
+    height: 100%;
+  }
+  .section-info p{
+    font-size: 0.8rem;
+  }
+
+  .section-info h1{
+    font-size: 1.2rem;
+  }
+
+  .section-info button{
+    padding: 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .footer p{
+    font-size: 0.6rem;
+  }
+ }
+
+
+@media screen and (max-width:465px ){
+  #navbar{
+    min-height: 3.5rem;
+  }
+
+  ul.menu-2{
+    margin: 0.6rem 0;
+  }
+  .logo{
+    width: 50%;
+  }
+  .logo img{
+    width: 100%;
+  }
+
+  .main-content{
+    height: 95vh;
+  }
+
+  .main-content img{
+    height: 100%;
+    object-fit:cover;
+  }
+
+  .section-info{
+    left: 3%;
+    width: 90%;
+  }
+
+  .section-info .btn{
+    width: 40%;
+  }
+
+  .section-info button{
+   font-size: 1.1rem;
+   padding: 1rem;
+  }
+
+  .section-info h1{
+    width: 100%;
+    font-size: 2rem;
+  }
+
+  .footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .legals{
+    margin-top: 1rem;
+  }
+
+  .legals a{
+    font-size: 1.2rem;
+  }
+  .trademark{
+    order: 10;
+    margin-top: 1rem;
+  }
+
+  .socials {
+    width: 60%;
+  }
+
+  .socials a{
+    font-size: 1.4rem;
+  }
+
+}
+
+@media screen and (max-width:410px ){
+
+  #navbar{
+    min-height: 3rem;
+  }
+
+  .logo{
+    width: 50%;
+  }
+  .logo img{
+    width: 100%;
+  }
+
+  #navbar .menu-2{
+    font-size: 1rem;
+  }
+  .section-info{
+    width: 90%;
+    left: 2.5%;
+  }
+
+  .section-info h1{
+   font-size: 2rem;
+   font-weight: 700;
+   width: 100%;
+  }
+
+  .section-info .btn{
+    width: 50%;
+  }
+  .section-info button{
+    width: 80%;
+    font-size: 1rem;
+    padding: 1rem;
+  }
+}
+
+
+@media screen and (max-width:373px ){
+  .section-info h1{
+    font-size: 1.8rem;
+    font-weight: 700;
+   }
+
+   .logo{
+    width: 50%;
+  }
+  .logo img{
+    width: 100%;
+  }
+
+  #navbar .menu-2{
+    font-size: 1rem;
+  }
+} 
+
+@media screen and (max-width:361px ){
+  .section-info h1{
+    width: 90%;
+    font-size: 1.6rem;
+    font-weight: 700;
+   }
+
+   .logo{
+    width: 50%;
+  }
+  .logo img{
+    width: 100%;
+  }
+
+  #navbar .menu-2{
+    font-size: 1rem;
+  }
+
+  .section-info .btn{
+    width: 50%;
+  }
+  .section-info button{
+    width: 100%;
+    font-size: 1rem;
+    padding: 1rem;
+  }
+} 
+  
+
